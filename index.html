@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PEAKY STORE - Joki & Jual Beli Akun Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.font-display{font-family:'Orbitron',sans-serif}
+
+/* Header */
+.header{background:rgba(10,10,10,0.98);padding:12px 16px;position:fixed;width:100%;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,215,0,0.1);backdrop-filter:blur(10px)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.logo-icon::before{content:'';position:absolute;width:100%;height:100%;background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,0.3) 50%,transparent 70%);animation:shine 3s infinite}
+.logo-icon svg{width:22px;height:22px;color:#000;position:relative;z-index:1}
+@keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.logo-text{font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;letter-spacing:1px}
+.logo-text span{color:#FFD700}
+
+.wa-btn{background:#25D366;color:#fff;padding:10px 16px;border-radius:25px;text-decoration:none;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;transition:all 0.3s;box-shadow:0 4px 15px rgba(37,211,102,0.3)}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.4)}
+.wa-btn svg{width:16px;height:16px}
+
+/* Hero */
+.hero{margin-top:60px;padding:40px 16px;text-align:center;background:linear-gradient(180deg,rgba(255,215,0,0.08) 0%,transparent 70%)}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,215,0,0.12);color:#FFD700;padding:8px 16px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:20px;border:1px solid rgba(255,215,0,0.25);font-family:'Orbitron',sans-serif;letter-spacing:0.5px}
+.badge svg{width:12px;height:12px;color:#FFD700}
+
+h1{font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;margin-bottom:15px;line-height:1.3;letter-spacing:0.5px}
+h1 .gold{color:#FFD700;display:block;font-size:34px;margin-top:5px;text-shadow:0 0 30px rgba(255,215,0,0.3)}
+
+.subtitle{color:#aaa;font-size:15px;margin-bottom:25px;max-width:90%;margin-left:auto;margin-right:auto;font-weight:400;line-height:1.7}
+
+.stats{display:flex;justify-content:center;gap:12px;margin-bottom:25px;flex-wrap:wrap}
+.stat{background:rgba(0,200,83,0.1);color:#00C853;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid rgba(0,200,83,0.2);display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif}
+.dot{width:7px;height:7px;background:#00C853;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.1)}}
+
+.btn{display:block;max-width:300px;margin:10px auto;padding:16px 24px;border-radius:30px;text-decoration:none;font-weight:700;font-size:14px;text-align:center;transition:all 0.3s;font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;box-shadow:0 4px 20px rgba(255,215,0,0.35);border:none}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(255,215,0,0.5)}
+.btn-outline{border:2px solid rgba(255,215,0,0.4);color:#FFD700;background:transparent}
+.btn-outline:hover{background:rgba(255,215,0,0.1);border-color:#FFD700}
+
+.btn svg{width:18px;height:18px;vertical-align:middle;margin-right:6px}
+
+.numbers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:340px;margin:30px auto 0}
+.num-box{background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.15);padding:18px 12px;border-radius:14px;text-align:center;transition:all 0.3s}
+.num-box:hover{border-color:rgba(255,215,0,0.3);transform:translateY(-3px)}
+.num-box .big{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:900;color:#FFD700;display:block;margin-bottom:4px}
+.num-box .small{font-size:12px;color:#777;font-weight:500}
+
+/* Section Title */
+.section-title{text-align:center;padding:45px 16px 25px}
+.section-title h2{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;letter-spacing:0.5px}h2 span{color:#FFD700}
+.section-title p{color:#888;font-size:14px;margin-top:8px;font-weight:400}
+
+/* Services */
+.services{padding:0 16px 10px}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,215,0,0.12);border-radius:18px;padding:20px;margin-bottom:14px;display:flex;gap:16px;align-items:flex-start;transition:all 0.3s}
+.card:hover{border-color:rgba(255,215,0,0.25);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,165,0,0.08));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;border:1px solid rgba(255,215,0,0.2)}
+.content h3{font-size:17px;font-weight:700;margin-bottom:6px;font-family:'Inter',sans-serif}
+.content p{color:#aaa;font-size:13px;margin-bottom:10px;line-height:1.6;font-weight:400}
+.tag{display:inline-flex;align-items:center;gap:5px;background:rgba(0,200,83,0.1);color:#00C853;padding:5px 12px;border-radius:12px;font-size:11px;font-weight:600;border:1px solid rgba(0,200,83,0.2)}
+.tag svg{width:12px;height:12px}
+
+/* Reviews */
+.reviews{padding:0 16px 25px}
+.review{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;margin-bottom:14px;transition:all 0.3s;opacity:0;animation:fadeIn 0.6s ease forwards}
+.review:hover{border-color:rgba(255,215,0,0.15)}
+@keyframes fadeIn{to{opacity:1}}
+
+.stars{color:#FFD700;font-size:14px;margin-bottom:12px;letter-spacing:2px;display:flex;gap:2px}
+.stars svg{width:14px;height:14px;fill:currentColor}
+
+.review>p{color:#ccc;font-size:14px;line-height:1.8;margin-bottom:16px;font-weight:400}
+
+.reviewer{display:flex;justify-content:space-between;align-items:center}
+.info{display:flex;align-items:center;gap:12px}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#FFA500);display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:13px;font-family:'Inter',sans-serif;flex-shrink:0;border:2px solid rgba(255,215,0,0.3)}
+.name-wrap{display:flex;flex-direction:column;gap:3px}
+.name{font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif}
+.verified{background:#00C853;color:#fff;font-size:9px;padding:3px 7px;border-radius:10px;font-weight:700;display:flex;align-items:center;gap:3px}
+.verified svg{width:10px;height:10px}
+.detail{color:#666;font-size:11px;font-weight:500}
+.time{color:#555;font-size:11px;font-weight:500;flex-shrink:0}
+
+/* Trust */
+.trust{padding:0 16px 30px}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.trust-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px 15px;text-align:center;transition:all 0.3s}
+.trust-item:hover{border-color:rgba(255,215,0,0.2);transform:translateY(-3px)}
+.trust-item .icon-wrap{width:50px;height:50px;background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(255,165,0,0.06));border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;border:1px solid rgba(255,215,0,0.15)}
+.trust-item .icon-wrap svg{width:24px;height:24px;color:#FFD700}
+.trust-item h4{font-size:14px;font-weight:700;margin-bottom:6px;font-family:'Inter',sans-serif}
+.trust-item p{color:#888;font-size:12px;font-weight:400;line-height:1.5}
+
+/* CTA */
+.cta{margin:20px 16px 30px;background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(255,165,0,0.04));border:1px solid rgba(255,215,0,0.25);border-radius:24px;padding:35px 24px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,215,0,0.1) 0%,transparent 70%);animation:glow 4s ease-in-out infinite}
+@keyframes glow{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.cta-content{position:relative;z-index:1}
+.cta .wa-big{width:70px;height:70px;background:linear-gradient(135deg,rgba(37,211,102,0.2),rgba(37,211,102,0.1));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid rgba(37,211,102,0.3);animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cta .wa-big svg{width:35px;height:35px;color:#25D366}
+.cta h3{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;margin-bottom:10px;letter-spacing:0.5px}
+.cta>p{color:#aaa;font-size:14px;margin-bottom:18px;font-weight:400}
+.phone{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;color:#25D366;text-decoration:none;display:block;margin-bottom:8px;letter-spacing:1px}
+.status{color:#00C853;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
+.status .dot{margin:0}
+
+/* Footer */
+.footer{background:#0d0d0d;border-top:1px solid rgba(255,255,255,0.05);padding:35px 16px;text-align:center}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
+.footer-logo .icon-small{width:32px;height:32px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.footer-logo .icon-small svg{width:18px;height:18px;color:#000}
+.footer-logo .text{font-family:'Orbitron',sans-serif;font-weight:900;font-size:20px;letter-spacing:1px}
+.footer-logo .text span{color:#FFD700}
+.footer>p{color:#666;font-size:13px;margin-bottom:20px;font-weight:400;line-height:1.6}
+.links{display:flex;justify-content:center;gap:25px;margin-bottom:20px}
+.links a{color:#999;text-decoration:none;font-size:13px;font-weight:500;transition:color 0.3s}
+.links a:hover{color:#FFD700}
+.copyright{color:#444;font-size:12px;font-weight:400}
+
+/* Floating WA */
+.float-wa{position:fixed;bottom:25px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 25px rgba(37,211,102,0.4);z-index:999;animation:floatWa 3s ease-in-out infinite;transition:all 0.3s}
+.float-wa:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,0.5)}
+@keyframes floatWa{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.float-wa svg{width:30px;height:30px;color:#fff}
+
+/* Responsive */
+@media(min-width:768px){
+.hero{padding:60px 24px}
+h1{font-size:36px}h1 .gold{font-size:42px}
+.numbers{grid-template-columns:repeat(4,1fr);max-width:600px}
+.services{max-width:800px;margin:0 auto}
+.reviews{max-width:800px;margin:0 auto}
+.trust-grid{grid-template-columns:repeat(4,1fr);max-width:800px;margin:0 auto}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG Definitions -->
+<svg style="display:none">
+<symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+<symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+<symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></symbol>
+<symbol id="icon-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+<symbol id="icon-gem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+<symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+<symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+<symbol id="icon-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></symbol>
+</svg>
+
+<!-- Header -->
+<div class="header">
+<div class="logo">
+<div class="logo-icon">
+<svg><use href="#icon-crown"/></svg>
+</div>
+<div class="logo-text">PEAKY<span>STORE</span></div>
+</div>
+<a href="https://wa.me/6283130907739" class="wa-btn">
+<svg><use href="#icon-whatsapp"/></svg>
+Chat
+</a>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+<div class="badge">
+<svg><use href="#icon-shield"/></svg>
+TRUSTED SINCE 2020
+</div>
+<h1>JOKI RANK & AKUN<br><span class="gold">TOP UP GAME</span></h1>
+<p class="subtitle">JOKI ML CEPAT MURAH. JUAL BELI AKUN AMAN BERGARANSI. TOP UP DIAMOND INSTANT.</p>
+
+<div class="stats">
+<div class="stat"><span class="dot"></span>58 order hari ini</div>
+<div class="stat">⭐ 4.9 Rating (2,847)</div>
+</div>
+
+<a href="https://wa.me/6283130907739" class="btn btn-primary">
+<svg><use href="#icon-whatsapp"/></svg>
+Chat Admin WhatsApp
+</a>
+<a href="#ulasan" class="btn btn-outline">
+<svg><use href="#icon-message"/></svg>
+Lihat Testimoni
+</a>
+
+<div class="numbers">
+<div class="num-box"><span class="big">8.5K+</span><span class="small">Joki Selesai</span></div>
+<div class="num-box"><span class="big">12K+</span><span class="small">Akun Terjual</span></div>
+<div class="num-box"><span class="big">15K+</span><span class="small">Top Up</span></div>
+<div class="num-box"><span class="big">4.8</span><span class="small">Rating Puas</span></div>
+</div>
+</div>
+
+<!-- Services -->
+<div class="section-title">
+<h2>LAYANAN <span>KAMI</span></h2>
+<p>Semua kebutuhan gaming Anda</p>
+</div>
+
+<div class="services">
+<div class="card">
+<div class="icon">🏆</div>
+<div class="content">
+<h3>JOKI MOBILE LEGENDS</h3>
+<p>Push rank Warrior ke Mythic Glory. Winrate 75-90%. Bisa request hero & role.</p>
+<span class="tag"><svg><use href="#icon-zap"/></svg>1-3 hari selesai</span>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">🔄</div>
+<div class="content">
+<h3>JUAL BELI AKUN GAME</h3>
+<p>Akun ML, FF, PUBG, Genshin sultan & murah. Bergaransi 7 hari.</p>
+<span class="tag"><svg><use href="#icon-check"/></svg>Ready 200+ akun</span>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">💎</div>
+<div class="content">
+<h3>TOP UP DIAMOND</h3>
+<p>Diamond ML, FF, UC PUBG, Genesis Crystal. Harga termurah.</p>
+<span class="tag"><svg><use href="#icon-zap"/></svg>Instant 1-5 menit</span>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">⭐</div>
+<div class="content">
+<h3>JOKI WINRATE & MMR</h3>
+<p>Naikin WR hero favorit. MMR tinggi. Classic win streak.</p>
+<span class="tag"><svg><use href="#icon-trophy"/></svg>Winrate 80%+</span>
+</div>
+</div>
+</div>
+
+<!-- Reviews -->
+<div class="section-title" id="ulasan">
+<h2>TESTIMONI <span>PELANGGAN</span></h2>
+<p>Ulasan joki & jual beli akun asli</p>
+</div>
+
+<div class="reviews">
+
+<div class="review" style="animation-delay:0.1s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+</div>
+<p>"Joki dari Legend 2 ke Mythic cuma 1 hari. Winrate 85% mantap! Playernya jago pakai mage sesuai req. Harga murah 80rb doang. Recommended seller!"</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar">AD</div>
+<div class="name-wrap">
+<div class="name">Ahmad D. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Joki ML • 8x Order</div>
+</div>
+</div>
+<span class="time">2 jam lalu</span>
+</div>
+</div>
+
+<div class="review" style="animation-delay:0.2s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+</div>
+<p>"Beli akun mythic 500 skin, proses ganti bind cepat 10 menit. Akun aman 2 bulan ini, gak ada masalah. Admin fast respon dan sabar ngasih tutor."</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar" style="background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;">SK</div>
+<div class="name-wrap">
+<div class="name">Sinta K. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Beli Akun ML • 3x Transaksi</div>
+</div>
+</div>
+<span class="time">5 jam lalu</span>
+</div>
+</div>
+
+<div class="review" style="animation-delay:0.3s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+</div>
+<p>"Joki WR hero Lunox dari 45% ke 70%. Main 20 match cuma kalah 2x. Bener2 joki pro bukan asal main. Dikasih tips trik juga. Bakal langganan!"</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);color:#fff;">RF</div>
+<div class="name-wrap">
+<div class="name">Rafi F. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Joki Winrate • 5x Order</div>
+</div>
+</div>
+<span class="time">8 jam lalu</span>
+</div>
+</div>
+
+<div class="review" style="animation-delay:0.4s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+</div>
+<p>"Jual akun pribadi ke Peaky, harga fair ga nego2. Payment langsung cair ke Dana. Amanah banget, beda sama calo lain. Thanks admin!"</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar" style="background:linear-gradient(135deg,#22c55e,#14b8a6);color:#fff;">BP</div>
+<div class="name-wrap">
+<div class="name">Budi P. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Jual Akun • 1x Transaksi</div>
+</div>
+</div>
+<span class="time">1 hari lalu</span>
+</div>
+</div>
+
+<div class="review" style="animation-delay:0.5s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+</div>
+<p>"Joki glory 100 bintang, dapet bonus 12 bintang. Playernya immortal rank, mainnya rapih. Dikasih tips trik juga buat main. Worth it banget!"</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar" style="background:linear-gradient(135deg,#ef4444,#f97316);color:#fff;">ML</div>
+<div class="name-wrap">
+<div class="name">Maulana L. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Joki Glory • 12x Order</div>
+</div>
+</div>
+<span class="time">1 hari lalu</span>
+</div>
+</div>
+
+<div class="review" style="animation-delay:0.6s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg style="opacity:0.5"><use href="#icon-star"/></svg>
+</div>
+<p>"Beli akun smurf buat mabar, murah 50rb udah epic banyak hero. Bind email gampang diganti. Cuma minus harus nunggu 1 jam buat login pertama."</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar" style="background:linear-gradient(135deg,#8b5cf6,#d946ef);color:#fff;">DR</div>
+<div class="name-wrap">
+<div class="name">Dewi R. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Beli Akun Smurf • 2x Transaksi</div>
+</div>
+</div>
+<span class="time">2 hari lalu</span>
+</div>
+</div>
+
+<div class="review" style="animation-delay:0.7s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+</div>
+<p>"Joki dari Epic ke Mythic Honor 50 bintang. Proses 2 hari, tiap hari dikasih update progress screenshot. Transparan dan amanah. Top!"</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar" style="background:linear-gradient(135deg,#f59e0b,#eab308);color:#fff;">FA</div>
+<div class="name-wrap">
+<div class="name">Fajar A. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Joki Mythic • 6x Order</div>
+</div>
+</div>
+<span class="time">2 hari lalu</span>
+</div>
+</div>
+
+<div class="review" style="animation-delay:0.8s">
+<div class="stars">
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+<svg><use href="#icon-star"/></svg>
+</div>
+<p>"Beli akun sultan 800 skin, nego dikasih harga special. Proses cepat, akun aman sampe sekarang 3 bulan. Adminnya baik dan trusted!"</p>
+<div class="reviewer">
+<div class="info">
+<div class="avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);color:#fff;">RN</div>
+<div class="name-wrap">
+<div class="name">Rina N. <span class="verified"><svg><use href="#icon-check"/></svg>Verified</span></div>
+<div class="detail">Beli Akun Sultan • 4x Transaksi</div>
+</div>
+</div>
+<span class="time">3 hari lalu</span>
+</div>
+</div>
+
+</div>
+
+<!-- Trust -->
+<div class="section-title">
+<h2>MENGAPA <span>PEAKY?</span></h2>
+</div>
+
+<div class="trust">
+<div class="trust-grid">
+<div class="trust-item">
+<div class="icon-wrap"><svg><use href="#icon-shield"/></svg></div>
+<h4>Garansi 100%</h4>
+<p>Money back guarantee</p>
+</div>
+<div class="trust-item">
+<div class="icon-wrap"><svg><use href="#icon-zap"/></svg></div>
+<h4>Proses Cepat</h4>
+<p>1-3 hari selesai</p>
+</div>
+<div class="trust-item">
+<div class="icon-wrap"><svg><use href="#icon-message"/></svg></div>
+<h4>Admin 24 Jam</h4>
+<p>Fast response</p>
+</div>
+<div class="trust-item">
+<div class="icon-wrap"><svg><use href="#icon-lock"/></svg></div>
+<h4>Aman & Legal</h4>
+<p>No cheat no hack</p>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<div class="cta-content">
+<div class="wa-big"><svg><use href="#icon-whatsapp"/></svg></div>
+<h3>ORDER SEKARANG</h3>
+<p>Tanyakan harga atau langsung order via WhatsApp</p>
+<a href="https://wa.me/6283130907739" class="phone">0831-3090-7739</a>
+<div class="status"><span class="dot"></span>Online 24 Jam • Fast Response</div>
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<div class="footer-logo">
+<div class="icon-small"><svg><use href="#icon-crown"/></svg></div>
+<div class="text">PEAKY<span>STORE</span></div>
+</div>
+<p>Joki ML, Jual Beli Akun & Top Up Game Terpercaya<br>Indonesia</p>
+<div class="links">
+<a href="https://wa.me/6283130907739">WhatsApp</a>
+<a href="#">Syarat</a>
+<a href="#">Privasi</a>
+</div>
+<div class="copyright">© 2026 Peaky Store. All rights reserved.</div>
+</div>
+
+<!-- Floating WA -->
+<a href="https://wa.me/6283130907739" class="float-wa"><svg><use href="#icon-whatsapp"/></svg></a>
+
+</body>
+</html>
